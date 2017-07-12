@@ -1,0 +1,12 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /console
+
+security:
+  user:
+    name: user
+    password: password
+    role: USER
+

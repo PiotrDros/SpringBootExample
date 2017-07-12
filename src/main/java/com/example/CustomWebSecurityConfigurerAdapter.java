@@ -1,9 +1,11 @@
 package com.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -11,13 +13,35 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 
+    @Value("${spring.h2.console.path}")
+    private String h2Path;
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("user").password("password").authorities("ROLE_USER");
     }
 
     @Override
+    public void configure(WebSecurity web) throws Exception {
+        // @formatter:off
+        web
+            .ignoring()
+                .antMatchers(h2Path + "/**");
+        // @formatter:on
+    }
+
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/securityNone").permitAll().anyRequest().authenticated().and().httpBasic();
+        // @formatter:off
+        http
+            .csrf().disable();
+
+        http
+         .authorizeRequests()
+            .antMatchers(h2Path + "/**").permitAll()
+            .antMatchers("/students/**").permitAll()
+          .anyRequest().authenticated().and().httpBasic();
+        // @formatter:on
+
     }
 }
