@@ -70,17 +70,71 @@
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-web</artifactId>
     </dependency>
-     <dependency>
+    <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-config</artifactId>
     </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>2.6.1</version>
+    </dependency>
+    <dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger-ui</artifactId>
+    <version>2.4.0</version>
+</dependency>
   </dependencies>
+
 
   <build>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>com.github.kongchen</groupId>
+        <artifactId>swagger-maven-plugin</artifactId>
+        <version>3.1.5</version>
+        <configuration>
+          <apiSources>
+            <apiSource>
+              <springmvc>true</springmvc>
+              <locations>com.example</locations>
+              <schemes>http,https</schemes>
+              <host>www.[host]:[port]</host>
+              <basePath>/v1</basePath>
+              <outputFormats>yaml</outputFormats>
+              <info>
+                <title>Swagger spec for our REST API</title>
+                <version>v1</version>
+                <description>This is a sample spec for our REST API</description>
+                <termsOfService>
+                  http://www.testcompany.com/terms-and-conditions
+                </termsOfService>
+                <contact>
+                  <email>SureshSatyam(@)testcompany.com</email>
+                  <name>Suresh Satyam</name>
+                  <url>http://www.testcompany.com</url>
+                </contact>
+                <license>
+                  <url>http://www.testcompany.com/licenses/LICENSE-2.0.html</url>
+                  <name>Company Licence</name>
+                </license>
+              </info>
+              <swaggerDirectory>src/main/webapp/</swaggerDirectory>
+            </apiSource>
+          </apiSources>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

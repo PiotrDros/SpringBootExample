@@ -2,7 +2,10 @@ package com.example.student;
 
 import javax.persistence.*;
 
+import io.swagger.annotations.ApiModel;
+
 @Entity
+@ApiModel
 public class Student {
 
     @Id
