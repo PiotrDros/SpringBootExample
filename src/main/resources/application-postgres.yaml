@@ -1,0 +1,7 @@
+# run it with -Dspring.profiles.active=postgres
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/SpringBootExample
+    username: postgres
+    password: postgres
+

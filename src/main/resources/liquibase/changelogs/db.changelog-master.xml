@@ -1,0 +1,18 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+  <changeSet author="piotr" id="create-tables">
+    <createTable schemaName="public" tableName="guide">
+      <column name="id" type="bigint" />
+      <column name="name" type="varchar(255)" />
+    </createTable>
+    <createTable schemaName="public" tableName="studnet">
+      <column name="id" type="bigint" />
+      <column name="guide_id" type="bigint" />
+      <column name="name" type="varchar(255)" />
+    </createTable>
+    <createSequence sequenceName="hibernate_sequence" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+</databaseChangeLog>
