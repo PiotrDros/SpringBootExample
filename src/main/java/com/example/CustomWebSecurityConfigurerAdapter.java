@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.controller.DataController;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -39,6 +41,7 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
         http
          .authorizeRequests()
             .antMatchers(h2Path + "/**").permitAll()
+            .antMatchers(DataController.THREAD + "/**").permitAll()
             .antMatchers("/students/**").permitAll()
           .anyRequest().authenticated().and().httpBasic();
         // @formatter:on

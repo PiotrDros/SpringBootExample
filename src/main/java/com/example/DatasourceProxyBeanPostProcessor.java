@@ -26,7 +26,7 @@ public class DatasourceProxyBeanPostProcessor implements BeanPostProcessor {
                     // logQueryBySlf4j(), logQueryByJUL(), logQueryToSysOut()
                     .logQueryByCommons(CommonsLogLevel.INFO).countQuery()
                     // also by sl4j, jul, system out
-                    .logSlowQueryByCommons(10, TimeUnit.MINUTES).build();
+                    .logSlowQueryByCommons(10, TimeUnit.MINUTES).countQuery().build();
         }
         return bean;
     }
