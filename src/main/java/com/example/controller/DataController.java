@@ -2,6 +2,8 @@ package com.example.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +26,7 @@ public class DataController {
             this.id = id;
         }
     }
+    private static Logger LOG = LoggerFactory.getLogger(DataController.class);
 
     @RequestMapping("data")
     public Map<String, String> getData() {
@@ -31,7 +34,9 @@ public class DataController {
         map.put("id", "15");
         map.put("content", "Hello Gaaaaaaaaaaaaaad!");
 
-        System.out.println(map);
+        LOG.info("Data was called");
+        LOG.debug("Deubug data");
+        LOG.warn("Warn data");
 
         return map;
     }
