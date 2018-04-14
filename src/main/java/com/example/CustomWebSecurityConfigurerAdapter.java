@@ -40,6 +40,7 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
 
         http
          .authorizeRequests()
+            .antMatchers("/cache/**").permitAll()
             .antMatchers(h2Path + "/**").permitAll()
             .antMatchers(DataController.THREAD + "/**").permitAll()
             .antMatchers("/students/**").permitAll()
