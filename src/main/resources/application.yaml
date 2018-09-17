@@ -2,6 +2,8 @@ spring:
   h2:
     console:
       path: /console
+  liquibase:
+    change-log: classpath:/liquibase/changelogs/db.changelog-master.xml
 
 security:
   user:
@@ -9,5 +11,3 @@ security:
     password: password
     role: USER
 
-liquibase:
-      change-log: classpath:/liquibase/changelogs/db.changelog-master.xml

@@ -46,12 +46,12 @@ public class StudentController {
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Result", response = Student.class) })
     @RequestMapping(value = "students/{id}", method = RequestMethod.GET)
     public Student getStudent(@PathVariable Long id) {
-        return studentRepository.findOne(id);
+        return studentRepository.findById(id).get();
     }
 
     @RequestMapping(value = "students/{id}", method = RequestMethod.DELETE)
     public void deleteStudent(@PathVariable Long id) {
-        studentRepository.delete(id);
+        studentRepository.deleteById(id);
     }
 
     @RequestMapping(value = "guides/", method = RequestMethod.GET)

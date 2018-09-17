@@ -45,6 +45,7 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
             .antMatchers(DataController.THREAD + "/**").permitAll()
             .antMatchers("/students/**").permitAll()
             .antMatchers("/securityNone").permitAll()
+            .antMatchers("/mis/**").permitAll()
           .anyRequest().authenticated().and().httpBasic();
         // @formatter:on
 
