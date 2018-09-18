@@ -14,8 +14,8 @@ public class DemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-
-        LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
-        StatusPrinter.print(lc);
+//
+//        LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
+//        StatusPrinter.print(lc);
     }
 }
